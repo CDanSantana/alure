@@ -35,6 +35,6 @@ after_build:
 
 artifacts:
 - path: alure_win64.zip
-    name: alure_win64
+    name: Alure
     type: zip
 p
