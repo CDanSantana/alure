@@ -34,6 +34,7 @@ after_build:
     echo "Test!"
 
 artifacts:
-    - path: alure_win64.zip
+- path: alure_win64.zip
     name: alure_win64
     type: zip
+p
