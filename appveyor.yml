@@ -29,11 +29,11 @@ build_script:
 
 after_build:
 - cmd: |
-    7z a alura_win64.zip C:/projects/alure/build\Release\*.*
-    appveyor PushArtifact alure_win64.zip
+    7z a C:/projects/alure/build/alura_win64.zip C:/projects/alure/build/Release/*.*
+    appveyor PushArtifact C:/projects/alure/build/alure_win64.zip
     echo "Test!"
 
 artifacts:
-- path: alure_win64.zip
+- path: C:/projects/alure/build/alure_win64.zip
   name: 'Alure'
   type: zip
