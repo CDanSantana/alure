@@ -1,11 +1,15 @@
 environment:
     matrix:
-      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-        GEN: "Visual Studio 14 2015"
-        ARCH: x64
-        CFG: Release
-      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-        GEN: "Visual Studio 15 2017"
+#      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+#        GEN: "Visual Studio 14 2015"
+#        ARCH: x64
+#        CFG: Release
+#      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+#        GEN: "Visual Studio 15 2017"
+#        ARCH: x64
+#        CFG: Release
+      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+        GEN: "Visual Studio 16 2019"
         ARCH: x64
         CFG: Release
 
@@ -22,3 +26,14 @@ build_script:
     cd build
     cmake -G"%GEN%" -A %ARCH% ..
     cmake --build . --config %CFG% --clean-first
+
+after_build:
+- cmd: |
+    7z a alura_win64.zip build\Release\*.*
+    appveyor PushArtifact alure_win64.zip
+    echo "Test!"
+
+artifacts:
+    - path: alure_win64.zip
+    name: alure_win64
+    type: zip
